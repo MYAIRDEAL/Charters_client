@@ -26,6 +26,7 @@ const ChCategory = () => {
         setLoading(true);
         const response = await axios.get(
           "http://localhost:8000/api/admin/modifycategory"
+          // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/modifycategory"
         );
         console.log(response);
         setCategoryData(response.data.data);
@@ -80,6 +81,7 @@ const ChCategory = () => {
       setLoading(true);
       await axios.post(
         "http://localhost:8000/api/admin/addmodifycategory",
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/addmodifycategory",
         formData,
         {
           headers: {
@@ -92,6 +94,7 @@ const ChCategory = () => {
 
       const response = await axios.get(
         "http://localhost:8000/api/admin/modifycategory"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/modifycategory"
       );
 
       handleCloseAddModal();
@@ -119,6 +122,7 @@ const ChCategory = () => {
       setLoading(true);
       await axios.put(
         `http://localhost:8000/api/admin/editcharterbyid/${editingCategory._id}`,
+        // `https://privatejetcharters-server-ttz1.onrender.com/api/admin/editcharterbyid/${editingCategory._id}`,
         formData,
         {
           headers: {
@@ -130,6 +134,7 @@ const ChCategory = () => {
 
       const response = await axios.get(
         "http://localhost:8000/api/admin/modifycategory"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/modifycategory"
       );
 
       handleCloseEditModal();
@@ -147,10 +152,12 @@ const ChCategory = () => {
       setLoading(true);
       await axios.delete(
         `http://localhost:8000/api/admin/deletecharterbyid/${id}`
+        // `https://privatejetcharters-server-ttz1.onrender.com/api/admin/deletecharterbyid/${id}`
       );
       message.success("Charter deleted successfully");
       const response = await axios.get(
         "http://localhost:8000/api/admin/modifycategory"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/modifycategory"
       );
       setCategoryData(response.data.data);
     } catch (err) {

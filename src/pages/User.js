@@ -2,6 +2,7 @@ import { message } from 'antd';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import UserCards from '../components/UserCards';
+import ShimmerEffect from '../components/ShimmerEffect';
 
 function User() {
 
@@ -21,6 +22,7 @@ function User() {
 
         try {
             await axios.post('http://localhost:8000/api/admin/register', formData);
+            // await axios.post('https://privatejetcharters-server-ttz1.onrender.com/api/admin/register', formData);
             setName('');
             setEmail('');
             setPassword('');
@@ -37,6 +39,7 @@ function User() {
     const getUsers = async () => {
         try {
             const response = await axios.get('http://localhost:8000/api/admin/getalladmins');
+            // const response = await axios.get('https://privatejetcharters-server-ttz1.onrender.com/api/admin/getalladmins');
             setUsers(response.data);
         } catch (error) {
             setUsers(null);
@@ -52,6 +55,7 @@ function User() {
             const deleteUser = async () => {
                 try {
                     await axios.delete(`http://localhost:8000/api/admin/deleteadmin/${deleteUserId}`);
+                    // await axios.delete(`https://privatejetcharters-server-ttz1.onrender.com/api/admin/deleteadmin/${deleteUserId}`);
                     getUsers();
                 } catch (error) {
                     console.error('Error deleting user:', error);
@@ -85,6 +89,7 @@ function User() {
 
             try {
                 await axios.put(`http://localhost:8000/api/admin/updateuserrolebyid/${updateUserId}`, formData);
+                // await axios.put(`https://privatejetcharters-server-ttz1.onrender.com/api/admin/updateuserrolebyid/${updateUserId}`, formData);
                 setName('');
                 setEmail('');
                 setPassword('');
@@ -181,7 +186,7 @@ function User() {
                                 {changeForm ? 'Update User' : 'Create new Role'}
                             </button>
                             <button
-                                type="button" 
+                                type="button"
                                 onClick={() => { formOpenerFun(); setChangeForm(false); }}
                                 className="text-white my-4 bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5"
                             >
@@ -195,9 +200,11 @@ function User() {
 
 
             <div className='flex flex-wrap items-center justify-start gap-10 p-8 my-10'>
-                {users?.data?.map((data) => (
+                {users ? users?.data?.map((data) => (
                     <UserCards key={data._id} props={{ ...data, setDeleteUserId, setUpdateUserId, setFormOpener, setChangeForm }} />
-                ))}
+                )) :
+                    <ShimmerEffect />
+                }
             </div>
         </div>
     );

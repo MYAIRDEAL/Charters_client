@@ -15,6 +15,7 @@ import ChCategory from './components/Categories/ChCategory';
 import Category from './pages/Category';
 import User from './pages/User';
 import SubCategory from './pages/SubCategory';
+import { ProtectedRouteUser } from './ProtectedRouteUser';
 
 function App() {
   return (
@@ -49,9 +50,9 @@ const AppContent = () => {
         />
 
         <Route path="/users" element={
-          <PrivateRoute>
+          <ProtectedRouteUser>
             <User />
-          </PrivateRoute>
+          </ProtectedRouteUser>
         }
         />
 
@@ -66,7 +67,6 @@ const AppContent = () => {
         <Route path="/subcategory/:charterType" element={<SubCategory />} />
         <Route path="/category/:section" element={<Category />} /> {/* New route */}
         <Route path="*" element={<Navigate to="/login" />} />
-
 
 
 

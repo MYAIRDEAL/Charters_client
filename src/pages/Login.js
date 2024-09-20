@@ -57,6 +57,7 @@ const Login = () => {
 
       if (formData.role.length > 0) {
         let Response = await axios.post('http://localhost:8000/api/admin/login', formData);
+        // let Response = await axios.post('https://privatejetcharters-server-ttz1.onrender.com/api/admin/login', formData);
         return (Response)
       }
       else {
@@ -70,10 +71,6 @@ const Login = () => {
     }
     return (formData);
   };
-
-
-
-
 
   const onFinish = async (values) => {
     try {
@@ -112,16 +109,16 @@ const Login = () => {
 
           <div class="mb-5">
             <label for="email" class="block mb-2 text-sm font-medium  dark:text-black"> Email</label>
-            <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div class="mb-5">
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">password</label>
-            <input type="password" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required onChange={(e) => setPassword(e.target.value)} />
           </div>
 
           <div class="max-w-sm mx-auto">
             <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Select Role</label>
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => setRole(e.target.value)}>
+            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => setRole(e.target.value)}>
 
               <option value={''}>Select User Role</option>
               <option value={'broker'}>broker</option>
@@ -130,9 +127,6 @@ const Login = () => {
               <option value={'super-admin'}>super-admin</option>
             </select>
           </div>
-
-
-
 
           <button type="submit" class="text-white my-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg border-none outline-none text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log In </button>
         </form>

@@ -15,6 +15,7 @@ const Charters = () => {
       try {
         const response = await axios.get(
           "http://localhost:8000/api/admin/getalltypes"
+          // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getalltypes"
         );
         setType(response.data.data); // Extract the data array from the response
         console.log(response.data.data);

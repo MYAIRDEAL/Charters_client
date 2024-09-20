@@ -27,6 +27,7 @@ const CharterCategories = () => {
         setLoading(true);
         const response = await axios.get(
           "http://localhost:8000/api/admin/getallcategories"
+          // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getallcategories"
         );
         setCategoryData(response.data.data);
       } catch (err) {
@@ -90,6 +91,7 @@ const CharterCategories = () => {
       setLoading(true);
       await axios.post(
         "http://localhost:8000/api/admin/addchartercategory",
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/addchartercategory",
         formData,
         {
           headers: {
@@ -101,6 +103,7 @@ const CharterCategories = () => {
 
       const response = await axios.get(
         "http://localhost:8000/api/admin/getallcategories"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getallcategories"
       );
 
       handleCloseAddModal();
@@ -132,6 +135,7 @@ const CharterCategories = () => {
       setLoading(true);
       await axios.put(
         `http://localhost:8000/api/admin/editcharterbyid/${editingCategory._id}`,
+        // `https://privatejetcharters-server-ttz1.onrender.com/api/admin/editcharterbyid/${editingCategory._id}`,
         formData,
         {
           headers: {
@@ -143,6 +147,7 @@ const CharterCategories = () => {
 
       const response = await axios.get(
         "http://localhost:8000/api/admin/getallcategories"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getallcategories"
       );
 
       handleCloseEditModal();
@@ -154,16 +159,17 @@ const CharterCategories = () => {
       setLoading(false);
     }
   };
-
   const handleDelete = async (id) => {
     try {
       setLoading(true);
       await axios.delete(
         `http://localhost:8000/api/admin/deletecharterbyid/${id}`
+        // `https://privatejetcharters-server-ttz1.onrender.com/api/admin/deletecharterbyid/${id}`
       );
       message.success("Charter deleted successfully");
       const response = await axios.get(
         "http://localhost:8000/api/admin/getallcategories"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getallcategories"
       );
       setCategoryData(response.data.data);
     } catch (err) {
@@ -307,80 +313,80 @@ const CharterCategories = () => {
       >
         <Form form={editForm} layout="vertical" onFinish={handleEditCategory}>
           <Form.Item
-        label="Charter Type"
-        name="type"
-        rules={[
-          { required: true, message: "Please input the category type!" },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Passengers"
-        name="passengers"
-        rules={[
-          {
-            required: true,
-            message:
-              "Please enter the number of passengers it can accommodate!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Speed per hour"
-        name="speed"
-        rules={[{ required: true, message: "Please enter speed details" }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Price"
-        name="price"
-        rules={[{ required: true, message: "Please enter the price" }]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Description"
-        name="description"
-        rules={[
-          { required: true, message: "Please enter a description" },
-        ]}
-      >
-        <ReactQuill theme="snow" />
-      </Form.Item>
-      <Form.Item
-        label="Availability"
-        name="availability"
-        rules={[
-          { required: true, message: "Please enter availability details" },
-        ]}
-      >
-        <Select>
-          <Option value="yes">Yes</Option>
-          <Option value="no">No</Option>
-        </Select>
-      </Form.Item>
-      <Form.Item label="Upload Image" name="image">
-        <Upload
-          customRequest={handleFileChange}
-          showUploadList={false}
-          accept="image/*"
-        >
-          <Button icon={<UploadOutlined />}>Upload Image</Button>
-        </Upload>
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit" loading={loading}>
-          Edit Category
-        </Button>
-      </Form.Item>
-    </Form>
-  </Modal>
-</>
-);
+            label="Charter Type"
+            name="type"
+            rules={[
+              { required: true, message: "Please input the category type!" },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Passengers"
+            name="passengers"
+            rules={[
+              {
+                required: true,
+                message:
+                  "Please enter the number of passengers it can accommodate!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Speed per hour"
+            name="speed"
+            rules={[{ required: true, message: "Please enter speed details" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Price"
+            name="price"
+            rules={[{ required: true, message: "Please enter the price" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Description"
+            name="description"
+            rules={[
+              { required: true, message: "Please enter a description" },
+            ]}
+          >
+            <ReactQuill theme="snow" />
+          </Form.Item>
+          <Form.Item
+            label="Availability"
+            name="availability"
+            rules={[
+              { required: true, message: "Please enter availability details" },
+            ]}
+          >
+            <Select>
+              <Option value="yes">Yes</Option>
+              <Option value="no">No</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item label="Upload Image" name="image">
+            <Upload
+              customRequest={handleFileChange}
+              showUploadList={false}
+              accept="image/*"
+            >
+              <Button icon={<UploadOutlined />}>Upload Image</Button>
+            </Upload>
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit" loading={loading}>
+              Edit Category
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
+    </>
+  );
 };
 
 export default CharterCategories

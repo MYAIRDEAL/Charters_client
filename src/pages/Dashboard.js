@@ -12,6 +12,7 @@ import {
 } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ShimmerEffect from "../components/ShimmerEffect";
 
 const Dashboard = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -28,8 +29,9 @@ const Dashboard = () => {
         setLoading(true);
         const response = await axios.get(
           "http://localhost:8000/api/admin/getalltypes"
+          // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getalltypes"
         );
-        setSectionData(response.data.data);
+        setSectionData(response?.data?.data);
       } catch (err) {
         console.log(err);
       } finally {
@@ -68,9 +70,11 @@ const Dashboard = () => {
     try {
       setLoading(true);
       await axios.post("http://localhost:8000/api/admin/addsections", values);
+      // await axios.post("https://privatejetcharters-server-ttz1.onrender.com/api/admin/addsections", values);
       message.success("Section added successfully");
       const response = await axios.get(
         "http://localhost:8000/api/admin/getalltypes"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getalltypes"
       );
       setSectionData(response.data.data);
       handleCloseAddModal();
@@ -87,11 +91,13 @@ const Dashboard = () => {
       setLoading(true);
       await axios.put(
         `http://localhost:8000/api/admin/updatesection/${editingCategory._id}`,
+        // `https://privatejetcharters-server-ttz1.onrender.com/api/admin/updatesection/${editingCategory._id}`,
         values
       );
       message.success("Section updated successfully");
       const response = await axios.get(
         "http://localhost:8000/api/admin/getalltypes"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getalltypes"
       );
       setSectionData(response.data.data);
       handleCloseEditModal();
@@ -107,9 +113,11 @@ const Dashboard = () => {
     try {
       setLoading(true);
       await axios.delete(`http://localhost:8000/api/admin/deletetype/${id}`);
+      // await axios.delete(`https://privatejetcharters-server-ttz1.onrender.com/api/admin/deletetype/${id}`);
       message.success("Section deleted successfully");
       const response = await axios.get(
         "http://localhost:8000/api/admin/getalltypes"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getalltypes"
       );
       setSectionData(response.data.data);
     } catch (err) {
@@ -138,7 +146,7 @@ const Dashboard = () => {
   // Checking is Admin or Not
 
 
-  let isRole =  localStorage.getItem('role') == 'super-admin' ? true : false
+  let isRole = localStorage.getItem('role') == 'super-admin' ? true : false
 
   return (
     <div className="p-6">
@@ -165,9 +173,7 @@ const Dashboard = () => {
 
       {/* Cards Section */}
       {loading ? (
-        <div className="flex items-center justify-center h-64">
-          <Spin size="large" />
-        </div>
+        <ShimmerEffect/>
       ) : (
         <div className="flex flex-wrap gap-4 m-2">
           {sectionData.map((category) => (
@@ -202,6 +208,7 @@ const Dashboard = () => {
           ))}
         </div>
       )}
+
 
       {/* Add Section Modal */}
       <Modal

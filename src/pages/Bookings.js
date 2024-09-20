@@ -15,6 +15,7 @@ const Bookings = () => {
     const deleteHandler = async (id) => {
         try {
             let URL = `http://localhost:8000/api/admin/deletebookingbyid/${id}`;
+            // let URL = `https://privatejetcharters-server-ttz1.onrender.com/api/admin/deletebookingbyid/${id}`;
             console.log("Deleting booking with ID:", id);
             await axios.delete(URL);
             message.success('Data deleted successfully');
@@ -28,6 +29,7 @@ const Bookings = () => {
     let fetchData = async () => {
         try {
             const URL = 'http://localhost:8000/api/admin/getallbookings';
+            // const URL = 'https://privatejetcharters-server-ttz1.onrender.com/api/admin/getallbookings';
             let resObj = await axios.get(URL);
             let arrayOfData = resObj.data.data.map((element, index) => {
                 return {
@@ -74,6 +76,7 @@ const Bookings = () => {
     const sortedResult = async () => {
         try {
             const url = 'http://localhost:8000/api/admin/sorted';
+            // const url = 'https://privatejetcharters-server-ttz1.onrender.com/api/admin/admin/sorted';
             const payload = {
                 from: fromDate,
                 to: toDate,

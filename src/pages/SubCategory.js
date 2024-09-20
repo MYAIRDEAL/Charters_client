@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { UploadOutlined } from "@ant-design/icons";
-import { Spin, Card, Button, Upload, Select , DatePicker , message, Modal, Form, Input } from "antd";
+import { Spin, Card, Button, Upload, Select, DatePicker, message, Modal, Form, Input } from "antd";
 
 const Category = () => {
   const { section, category } = useParams();
@@ -19,6 +19,7 @@ const Category = () => {
         setLoading(true);
         const response = await axios.post(
           `http://localhost:8000/api/admin/filterbytypeandcategory/${section}/${category}`
+          // `https://privatejetcharters-server-ttz1.onrender.com/api/admin/filterbytypeandcategory/${section}/${category}`
         );
         setCategories(response.data.data);
       } catch (err) {
@@ -42,7 +43,7 @@ const Category = () => {
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
-  
+
       // Creating FormData object to append all the required fields
       const formData = new FormData();
       formData.append("section", section);
@@ -82,14 +83,15 @@ const Category = () => {
       formData.append("operatorname", values.operatorname);
       formData.append("operatoremail", values.operatoremail);
       formData.append("operatorphone", values.operatorphone);
-  
+
       if (file) {
         formData.append("image", file);  // Append image file if available
       }
-  
+
       // Make the API request to add the subcategory
       const response = await axios.post(
         "http://localhost:8000/api/admin/addsubcategory",
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/addsubcategory",
         formData,
         {
           headers: {
@@ -97,21 +99,21 @@ const Category = () => {
           },
         }
       );
-  
+
       message.success("Subcategory added successfully");
-  
+
       // Reset form and modal state
       form.resetFields();
       setFile(null);
       setIsModalVisible(false);
-  
+
       window.location.reload();
     } catch (err) {
       console.error("Error:", err);
       message.error("Failed to add subcategory. Please try again.");
     }
   };
-  
+
 
   const handleCancel = () => {
     setIsModalVisible(false);

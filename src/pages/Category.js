@@ -19,6 +19,7 @@ const Category = () => {
         setLoading(true);
         const response = await axios.get(
           `http://localhost:8000/api/admin/categorybytype/${section}`
+          // `https://privatejetcharters-server-ttz1.onrender.com/api/admin/categorybytype/${section}`
         );
         setCategories(response.data.data);
       } catch (err) {
@@ -53,6 +54,7 @@ const Category = () => {
 
       const response = await axios.post(
         "http://localhost:8000/api/admin/addmodifycategory",
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/addmodifycategory",
         formData,
         {
           headers: {

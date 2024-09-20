@@ -36,12 +36,7 @@ function UserCards({ props }) {
                         <h1>{props.role}</h1>
 
                     </div>
-
-
-
                 </div>
-
-
 
             </div>
 
@@ -50,7 +45,7 @@ function UserCards({ props }) {
                     className='bg-green-600 w-[40%] h-[2rem] rounded-sm hover:scale-105 transition-all duration-300'
                     onClick={(e) => {
                         props.setUpdateUserId(props._id);
-                        props.setFormOpener(true); 
+                        props.setFormOpener(true);
                         props.setChangeForm(true)
                         // console.log()
                         console.log(props._id) // Changed setFromOpener to setFormOpener
@@ -67,11 +62,6 @@ function UserCards({ props }) {
                     Delete
                 </button>
             </div>
-
-
-
-
-
         </div>
     )
 }

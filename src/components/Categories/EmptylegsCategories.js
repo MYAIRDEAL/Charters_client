@@ -25,6 +25,7 @@ const EmptylegsCategories = () => {
         setLoading(true);
         const response = await axios.get(
           "http://localhost:8000/api/admin/getallemptylegs"
+          // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getallemptylegs"
         );
         setCategoryData(response.data.data);
       } catch (err) {
@@ -93,6 +94,7 @@ const EmptylegsCategories = () => {
       setLoading(true);
       await axios.post(
         "http://localhost:8000/api/admin/addemptylegs",
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/addemptylegs",
         formData,
         {
           headers: {
@@ -104,6 +106,7 @@ const EmptylegsCategories = () => {
 
       const response = await axios.get(
         "http://localhost:8000/api/admin/getallemptylegs"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getallemptylegs"
       );
 
       handleCloseAddModal();
@@ -139,6 +142,7 @@ const EmptylegsCategories = () => {
       setLoading(true);
       await axios.put(
         `http://localhost:8000/api/admin/editemptylegsbyid/${editingCategory._id}`,
+        // `https://privatejetcharters-server-ttz1.onrender.com/api/admin/editemptylegsbyid/${editingCategory._id}`,
         formData,
         {
           headers: {
@@ -150,6 +154,7 @@ const EmptylegsCategories = () => {
 
       const response = await axios.get(
         "http://localhost:8000/api/admin/getallemptylegs"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getallemptylegs"
       );
 
       handleCloseEditModal();
@@ -167,10 +172,12 @@ const EmptylegsCategories = () => {
       setLoading(true);
       await axios.delete(
         `http://localhost:8000/api/admin/deleteemptylegsbyid/${id}`
+        // `https://privatejetcharters-server-ttz1.onrender.com/api/admin/deleteemptylegsbyid/${id}`
       );
       message.success("Charter deleted successfully");
       const response = await axios.get(
         "http://localhost:8000/api/admin/getallemptylegs"
+        // "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getallemptylegs"
       );
       setCategoryData(response.data.data);
     } catch (err) {
