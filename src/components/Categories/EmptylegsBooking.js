@@ -46,7 +46,7 @@ const EmptylegsBooking = () => {
             setData(arrayOfData);
             return arrayOfData;
         }
-        catch(error){
+        catch (error) {
             message.error('API is faild to get Data!!!')
         }
     };

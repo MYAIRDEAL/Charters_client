@@ -130,7 +130,7 @@ const Category = () => {
       <div className="flex justify-between mb-2">
         <h1 className="mb-4 text-2xl font-bold">{section} Categories</h1>
         <button
-          className="bg-sky-700 text-white p-2 rounded-lg"
+          className="bg-hoverColor text-white p-2 rounded-lg"
           onClick={showModal}
         >
           Add Sub-Category
@@ -141,7 +141,7 @@ const Category = () => {
           <Spin size="large" />
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-4">
           {categories.map((category, index) => (
             <div key={category?._id ?? index} className="p-4">
               <Card
@@ -153,7 +153,7 @@ const Category = () => {
                 }
                 actions={[
                   <Button
-                    type="primary"
+                    className="!text-white border-none !bg-hoverColor"
                     onClick={() => handleExploreMore(category.chartertype)}
                   >
                     Explore More
@@ -166,6 +166,7 @@ const Category = () => {
                     (category?.description?.substring(0, 100) || "") + "..."
                   }
                 />
+
               </Card>
             </div>
           ))}
@@ -227,7 +228,7 @@ const Category = () => {
               showUploadList={true}
               accept="image/*"
             >
-              <Button icon={<UploadOutlined />}>Upload Image</Button>
+              <Button icon={<UploadOutlined />} >Upload Image</Button>
             </Upload>
           </Form.Item>
 

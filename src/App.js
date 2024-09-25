@@ -16,6 +16,8 @@ import Category from './pages/Category';
 import User from './pages/User';
 import SubCategory from './pages/SubCategory';
 import { ProtectedRouteUser } from './ProtectedRouteUser';
+import ForgotPassword from './components/ForgotPassword';
+import BookingsDetails from './components/BookingsDetails';
 
 function App() {
   return (
@@ -28,7 +30,7 @@ function App() {
 const AppContent = () => {
   const location = useLocation();
 
-  const showLayout = location.pathname !== '/login' && location.pathname !== '/register';
+  const showLayout = location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/forgotpassword';
 
   return showLayout ? (
     <Layout>
@@ -66,14 +68,15 @@ const AppContent = () => {
         <Route path="/chartersCategory" element={<PrivateRoute><ChCategory /></PrivateRoute>} />
         <Route path="/subcategory/:charterType" element={<SubCategory />} />
         <Route path="/category/:section" element={<Category />} /> {/* New route */}
+        <Route path="/bookingsdetails" element={<BookingsDetails />} /> {/* New route */}
         <Route path="*" element={<Navigate to="/login" />} />
-
-
 
       </Routes>
     </Layout>
+
   ) : (
     <Routes>
+      <Route path="/forgotpassword" element={<ForgotPassword />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<RegisterForm />} />
       <Route path="*" element={<Navigate to="/login" />} />

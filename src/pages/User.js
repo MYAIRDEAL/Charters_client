@@ -3,6 +3,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import UserCards from '../components/UserCards';
 import ShimmerEffect from '../components/ShimmerEffect';
+import plus from '../assets/images/plus.svg'
+import EmptylegsBooking from '../components/Categories/EmptylegsBooking';
+import EmptylegsCategories from '../components/Categories/EmptylegsCategories';
+import RegisterForm from '../components/Categories/RegisterForm';
+import UseTable from './UseTable';
+import DashboardLayoutBranding from './DashboardLayoutPattern';
+
+
 
 function User() {
 
@@ -14,6 +22,7 @@ function User() {
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('broker');
     const [changeForm, setChangeForm] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
 
     const handleSubmit = async (e) => {
@@ -38,6 +47,7 @@ function User() {
 
     const getUsers = async () => {
         try {
+            setIsLoading(true)
             const response = await axios.get('http://localhost:8000/api/admin/getalladmins');
             // const response = await axios.get('https://privatejetcharters-server-ttz1.onrender.com/api/admin/getalladmins');
             setUsers(response.data);
@@ -67,7 +77,7 @@ function User() {
 
 
     useEffect(() => {
-        let temp = async () => {
+        let showData = async () => {
             if (users) {
                 console.log('it is working')
                 const response = await users.data.filter((e) => e._id === updateUserId);
@@ -75,7 +85,8 @@ function User() {
                 setEmail(response[0]?.email)
             }
         }
-        temp()
+        // setDeleteUserId(null)
+        showData()
     }, [updateUserId])
 
 
@@ -111,20 +122,21 @@ function User() {
 
     return (
         <div>
-            <div className='flex items-center flex-wrap gap-5 justify-between px-10'>
+            <div className='flex items-center flex-wrap gap-5 justify-between my-10 px-10'>
                 <div>
-                    <h1 className='text-[1.5rem]'>
+                    <h1 className='text-[1.5rem] text-hoverColor'>
                         Welcome to the Super Admin Panel
                     </h1>
                     <p>
                         Handle All the User Role's here
                     </p>
                 </div>
-                <button className='bg-blue-600 text-[1.1rem] font-semibold w-[8rem] text-white h-[2.5rem] rounded-lg' onClick={() => {
+                <button className='bg-hoverColor flex items-center gap-2 justify-center text-[1.1rem] font-semibold w-[8rem] text-white h-[2.5rem] rounded-lg' onClick={() => {
                     formOpenerFun()
                     setChangeForm(false);
                 }}>
                     Add User
+                    <img src={plus} alt="" className=' w-[1rem]' />
                 </button>
             </div>
 
@@ -197,15 +209,17 @@ function User() {
                 </div>
             </div>
 
+            {users ?
+                // <Example props={users} /> 
+
+                < UseTable props={{ ...users, setDeleteUserId, setUpdateUserId, setFormOpener, setChangeForm }} />
+                : ''
+            }
 
 
-            <div className='flex flex-wrap items-center justify-start gap-10 p-8 my-10'>
-                {users ? users?.data?.map((data) => (
-                    <UserCards key={data._id} props={{ ...data, setDeleteUserId, setUpdateUserId, setFormOpener, setChangeForm }} />
-                )) :
-                    <ShimmerEffect />
-                }
-            </div>
+            {/* <DashboardLayoutBranding /> */}
+
+
         </div>
     );
 }

@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import threeDots from '../assets/images/threeDots.svg'
+import deleteIcon from '../assets/images/DashBordCard/delete.svg'
+import editIcon from '../assets/images/DashBordCard/editIcon.svg'
 import {
   Modal,
   Form,
@@ -10,9 +13,11 @@ import {
   Menu,
   Select,
 } from "antd";
-import axios from "axios";
+import axios, { formToJSON } from "axios";
 import { useNavigate } from "react-router-dom";
 import ShimmerEffect from "../components/ShimmerEffect";
+
+import plus from '../assets/images/plus.svg'
 
 const Dashboard = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -152,7 +157,7 @@ const Dashboard = () => {
     <div className="p-6">
       <div className="flex justify-between">
         <div>
-          <h1 className="mb-4 text-2xl font-bold">
+          <h1 className="mb-4 text-2xl font-bold text-hoverColor">
             Welcome to the  {localStorage.getItem('role') || 'Control'} Panel
           </h1>
           <p className="mb-8">
@@ -163,42 +168,58 @@ const Dashboard = () => {
         <div className={`${isRole ? 'flex' : 'hidden'}`}>
           <Button
             type="primary"
-            className="bg-sky-700"
+            className="!bg-hoverColor text-white"
             onClick={handleOpenAddModal}
           >
             Add type
+            <img src={plus} alt="" className=' w-[1rem]' />
           </Button>
         </div>
       </div>
 
       {/* Cards Section */}
       {loading ? (
-        <ShimmerEffect/>
+        <ShimmerEffect />
       ) : (
         <div className="flex flex-wrap gap-4 m-2">
           {sectionData.map((category) => (
             <div
-              className="border shadow-md w-[26rem] h-[7rem] p-4 flex-col gap-4"
+              className="border shadow-md w-[17rem] rounded-lg h-[7rem] p-4 flex-col gap-4"
               key={category._id}
             >
               <div className="flex justify-between">
-                <h1>{category.section}</h1>
+                <h1 className="font-semibold">{category.section}</h1>
                 <Dropdown
                   overlay={
-                    <Menu onClick={({ key }) => handleMenuClick(key, category)}>
-                      <Menu.Item key="edit">Edit</Menu.Item>
-                      <Menu.Item key="delete">Delete</Menu.Item>
+                    <Menu onClick={({ key }) => handleMenuClick(key, category)} className="!bg-hoverColor !bg-opacity-65" >
+                      <Menu.Item key="edit" >
+                        <span className="flex gap-1">
+                          <img src={editIcon} alt="" className="w-[1rem]" />
+                          Edit
+                        </span>
+                      </Menu.Item>
+                      <Menu.Item key="delete">
+                        <span className="flex gap-1">
+                          <img src={deleteIcon} alt="" className="w-[1rem]" />
+                          Delete
+                        </span>
+                      </Menu.Item>
                     </Menu>
                   }
                   trigger={["click"]}
+                  className="h-[1rem] flex items-center justify-center"
                 >
-                  <Button>...</Button>
+                  {/* <Button className="bg-green-600 flex flex-col">...</Button> */}
+                  <Button className="flex border-none shadow-none outline-none">
+                    <img src={threeDots} alt="" />
+                  </Button>
                 </Dropdown>
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-center">
                 <Button
-                  type="primary"
-                  className="mt-4 bg-blue-800"
+                  
+                  // className="mt-4 bg-hoverColor w-[80%] !focus:!bg-hoverColor"
+                  className="mt-4 !bg-hoverColor w-[80%] !text-white !border-none"
                   onClick={() => handleCategory(category.section)}
                 >
                   Explore more
@@ -236,7 +257,7 @@ const Dashboard = () => {
             </Select>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button className="!bg-hoverColor !border-none !text-white" htmlType="submit">
               Add Section
             </Button>
           </Form.Item>

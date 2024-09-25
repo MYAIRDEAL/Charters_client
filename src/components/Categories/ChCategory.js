@@ -182,7 +182,7 @@ const ChCategory = () => {
         <div className="ml-2 text-2xl font-bold">All Charter Categories</div>
         <button
           onClick={handleOpenAddModal}
-          className="p-4 text-white bg-blue-800 border border-white rounded-md"
+          className="p-4 text-white bg-hoverColor border border-white rounded-md"
         >
           Add Category
         </button>
@@ -292,7 +292,7 @@ const ChCategory = () => {
             </Upload>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" loading={loading}>
+            <Button className="bg-hoverColor" htmlType="submit" loading={loading}>
               Edit Category
             </Button>
           </Form.Item>

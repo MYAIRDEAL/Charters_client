@@ -77,7 +77,7 @@ const Charters = () => {
           </p>
           <div className="flex justify-start">
             <button
-              className="text-white bg-blue-800 p-2 rounded-md mt-4"
+              className="text-white bg-hoverColor p-2 rounded-md mt-4"
               onClick={handleBookings}
             >
               Explore more
@@ -101,7 +101,7 @@ const Charters = () => {
               </p>
               <div className="flex justify-start">
                 <button
-                  className="text-white bg-blue-800 p-2 rounded-md mt-4"
+                  className="text-white bg-hoverColor p-2 rounded-md mt-4"
                   onClick={handleCategory}
                 >
                   Explore more

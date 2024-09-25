@@ -93,7 +93,7 @@ const Category = () => {
       <div className="flex justify-between mb-2">
         <h1 className="mb-4 text-2xl font-bold">{section} Categories</h1>
         <button
-          className={` ${localStorage.getItem('role') == 'user-admin' ? 'hidden' : 'flex'} bg-sky-700 text-white p-2 rounded-lg`}
+          className={` ${localStorage.getItem('role') == 'user-admin' ? 'hidden' : 'flex'} h-11 p-2 flex items-center justify-center bg-hoverColor text-white w-[10rem] rounded-lg`}
           onClick={showModal}
         >
           Add Category
@@ -108,6 +108,7 @@ const Category = () => {
           {categories.map((category, index) => (
             <div key={category?._id ?? index} className="p-4">
               <Card
+                className=" shadow-xl border-none"
                 cover={
                   <img
                     alt={category?.chartertype || "Image"}
@@ -116,7 +117,7 @@ const Category = () => {
                 }
                 actions={[
                   <Button
-                    type="primary"
+                    className="!bg-hoverColor border-none hover:!text-white text-white w-[90%] h-10"
                     onClick={() => handleExploreMore(category.chartertype)}
                   >
                     Explore More
@@ -125,6 +126,7 @@ const Category = () => {
               >
                 <Card.Meta
                   title={category?.chartertype || "No Title"}
+
                   description={
                     (category?.description?.substring(0, 100) || "") + "..."
                   }

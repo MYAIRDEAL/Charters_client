@@ -190,7 +190,7 @@ const CharterCategories = () => {
         <div className="ml-2 text-2xl font-bold">All Charter Categories</div>
         <button
           onClick={handleOpenAddModal}
-          className="p-4 text-white bg-blue-800 border border-white rounded-md"
+          className="p-4 text-white bg-hoverColor border border-white rounded-md"
         >
           Add Category
         </button>
