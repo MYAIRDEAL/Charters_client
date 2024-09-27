@@ -54,7 +54,7 @@ const Enquiries = () => {
   const sortedResult = async () => {
     try {
     //   const url = "https://privatejetcharters-server-ttz1.onrender.com/api/admin/filterenquirybydate";
-    const url="http://localhost:8000/api/admin/filterenquirybydate"
+    const url="https://privatejetcharters-server-ttz1.onrender.com/api/admin/filterenquirybydate"
       const payload = { from: fromDate, to: toDate };
       console.log(payload)
       

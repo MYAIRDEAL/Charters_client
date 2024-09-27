@@ -9,7 +9,7 @@ const Login = () => {
 
   const loginUserCall = async (payload) => {
     // try {
-    //   const response = await axios.post("http://localhost:8000/api/admin/login", payload);
+    //   const response = await axios.post("https://privatejetcharters-server-ttz1.onrender.com/api/admin/login", payload);
     //   // console.log(response)
     //   return response;
     // } catch (err) {
