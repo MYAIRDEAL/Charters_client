@@ -1,21 +1,28 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Layout from './components/Layout';
-import Charters from './components/Categories/Charters';
-import Emptylegs from './components/Categories/Emptylegs';
-import EmptylegsCategories from './components/Categories/EmptylegsCategories';
-import CharterCategories from './components/Categories/CharterCategories';
-import Bookings from './pages/Bookings';
-import EmptylegsBooking from './components/Categories/EmptylegsBooking';
-import RegisterForm from './components/Categories/RegisterForm';
-import { PrivateRoute } from './ProtectedRoute'
-import ChCategory from './components/Categories/ChCategory';
-import Category from './pages/Category';
-import Logs from './components/Categories/Logs';import User from './pages/User';
-import SubCategory from './pages/SubCategory';
-import Enquiries from './components/Categories/Enquiries'
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Layout from "./components/Layout";
+import Charters from "./components/Categories/Charters";
+import Emptylegs from "./components/Categories/Emptylegs";
+import EmptylegsCategories from "./components/Categories/EmptylegsCategories";
+import CharterCategories from "./components/Categories/CharterCategories";
+import Bookings from "./pages/Bookings";
+import EmptylegsBooking from "./components/Categories/EmptylegsBooking";
+import RegisterForm from "./components/Categories/RegisterForm";
+import { PrivateRoute } from "./ProtectedRoute";
+import ChCategory from "./components/Categories/ChCategory";
+import Category from "./pages/Category";
+import Logs from "./components/Categories/Logs";
+import User from "./pages/User";
+import SubCategory from "./pages/SubCategory";
+import Enquiries from "./components/Categories/Enquiries";
 function App() {
   return (
     <Router>
@@ -27,7 +34,8 @@ function App() {
 const AppContent = () => {
   const location = useLocation();
 
-  const showLayout = location.pathname !== '/login' && location.pathname !== '/register';
+  const showLayout =
+    location.pathname !== "/login" && location.pathname !== "/register";
 
   return showLayout ? (
     <Layout>
@@ -40,39 +48,95 @@ const AppContent = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/charters" element={
-
-          <PrivateRoute>
-            <Charters />
-          </PrivateRoute>
-        }
-        /> 
-         <Route path="/logs" element={<Logs/>}/>
-         <Route path="/enquiries" element={<Enquiries/>}/>
-         <Route path="/bookings" element={<Bookings/>}/>
-
-        <Route path="/users" element={
-          <PrivateRoute>
-            <User />
-          </PrivateRoute>
-        }
+        <Route
+          path="/charters"
+          element={
+            <PrivateRoute>
+              <Charters />
+            </PrivateRoute>
+          }
         />
-
-
-        <Route path="/emptylegs" element={<PrivateRoute><Emptylegs /></PrivateRoute>} />
-        <Route path="/emptylegsAllCategories" element={<PrivateRoute><EmptylegsCategories /></PrivateRoute>} />
-        <Route path="/chartersAllCategories" element={<PrivateRoute><CharterCategories /></PrivateRoute>} />
-        <Route path="/chartersBookings" element={<PrivateRoute><Bookings /></PrivateRoute>} />
-        <Route path="/emptylegbookings" element={<PrivateRoute><EmptylegsBooking /></PrivateRoute>} />
+        {/* <Route path="/logs" element={<Logs />} />
+        <PrivateRoute>
+          <Logs />
+        </PrivateRoute> */}
+        <Route
+          path="/enquiries"
+          element={
+            <PrivateRoute>
+              <Enquiries />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/bookings"
+          element={
+            <PrivateRoute>
+              <Bookings />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <PrivateRoute>
+              <User />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/emptylegs"
+          element={
+            <PrivateRoute>
+              <Emptylegs />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/emptylegsAllCategories"
+          element={
+            <PrivateRoute>
+              <EmptylegsCategories />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/chartersAllCategories"
+          element={
+            <PrivateRoute>
+              <CharterCategories />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/chartersBookings"
+          element={
+            <PrivateRoute>
+              <Bookings />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/emptylegbookings"
+          element={
+            <PrivateRoute>
+              <EmptylegsBooking />
+            </PrivateRoute>
+          }
+        />
         <Route path="/explore/:section/:category" element={<SubCategory />} />
-        <Route path="/chartersCategory" element={<PrivateRoute><ChCategory /></PrivateRoute>} />
+        <Route
+          path="/chartersCategory"
+          element={
+            <PrivateRoute>
+              <ChCategory />
+            </PrivateRoute>
+          }
+        />
         <Route path="/subcategory/:charterType" element={<SubCategory />} />
-        <Route path="/category/:section" element={<Category />} /> {/* New route */}
+        <Route path="/category/:section" element={<Category />} />{" "}
+        {/* New route */}
         <Route path="*" element={<Navigate to="/login" />} />
-
-
-
-
       </Routes>
     </Layout>
   ) : (
@@ -83,7 +147,5 @@ const AppContent = () => {
     </Routes>
   );
 };
-
-
 
 export default App;

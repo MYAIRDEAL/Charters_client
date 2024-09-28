@@ -115,7 +115,7 @@ const Login = () => {
             <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div class="mb-5">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">password</label>
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password</label>
             <input type="password" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required onChange={(e) => setPassword(e.target.value)} />
           </div>
 
@@ -124,10 +124,10 @@ const Login = () => {
             <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => setRole(e.target.value)}>
 
               <option value={''}>Select User Role</option>
-              <option value={'broker'}>broker</option>
-              <option value={'operator'}>operator</option>
-              <option value={'user-admin'}>user-admin</option>
-              <option value={'super-admin'}>super-admin</option>
+              <option value={'broker'}>Broker</option>
+              <option value={'operator'}>Operator</option>
+              <option value={'user-admin'}>User-Admin</option>
+              <option value={'super-admin'}>Super-Admin</option>
             </select>
           </div>
 
