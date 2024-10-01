@@ -50,7 +50,7 @@ const Category = () => {
   const fetchUsers = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:8000/api/admin/getalladmins"
+        "https://privatejetcharters-server-ttz1.onrender.com/api/admin/getalladmins"
       );
       console.log(res.data);
       setUser(res.data.data);
@@ -160,7 +160,7 @@ const Category = () => {
   const handleDelete = async (categoryId) => {
     try {
       await axios.delete(
-        `http://localhost:8000/api/admin/deletemodifysubcharterbyid/${categoryId}`
+        `https://privatejetcharters-server-ttz1.onrender.com/api/admin/deletemodifysubcharterbyid/${categoryId}`
       );
       message.success("Subcategory deleted successfully");
       setCategories((prevCategories) =>
