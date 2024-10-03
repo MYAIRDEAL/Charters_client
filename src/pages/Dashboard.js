@@ -55,7 +55,7 @@ const Dashboard = () => {
     setIsEditModalOpen(true);
     editForm.setFieldsValue({
       section: category.section,
-      active: category.active ? "Yes" : "No",
+      active: category.active ? "yes" : "no",
     });
   };
 
